@@ -18,3 +18,4 @@ jobs:
       deploy:
         provider: npm
         api_key: $NPM_API_KEY
+        email: $NPM_MAIL
