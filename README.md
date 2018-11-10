@@ -1,4 +1,9 @@
 # log
+[![NPM](https://nodei.co/npm/@haensl%2Flog.png?downloads=true)](https://nodei.co/npm/@haensl%2log/)
+
+[![npm version](https://badge.fury.io/js/@haensl%2Flog.svg)](http://badge.fury.io/js/@haensl%2Flog)
+[![travis-ci build status](https://api.travis-ci.org/haensl/@haensl%2Flog.svg?branch=master)](https://travis-ci.org/haensl/@haensl%2Flog/branches)
+
 Minimal Node.js log service.
 
 ## Installation

@@ -36,7 +36,7 @@ describe('log', () => {
     describe(`${logLevel}()`, () => {
       beforeEach(() => {
         consoleSpy = sinon.spy(console, logLevel);
-        regex = new RegExp(`^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2} ${prefixes[logLevel]}`);
+        regex = new RegExp(`^\\d{4}-\\d{2}-\\d{2} \\d{1,2}:\\d{2}:\\d{2} ${prefixes[logLevel]}`);
       });
 
       afterEach(() => {
