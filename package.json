@@ -12,6 +12,9 @@
     "test": "mocha --recursive '*.test.js'",
     "test:junit": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/results.xml --recursive '*.test.js'"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/haensl/log.git"
