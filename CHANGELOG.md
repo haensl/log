@@ -1,3 +1,8 @@
+## 1.1.0
+* [#6: Add debug log level.](https://github.com/haensl/log/issues/6)
+* Add colored output.
+* Update dependencies.
+
 ## 1.0.2
 * [#4: Update dependencies.](https://github.com/haensl/log/issues/4)
 

@@ -1,0 +1,22 @@
+{
+  "debug": {
+    "prefix": "DEBUG",
+    "color": "green"
+  },
+  "error": {
+    "prefix": "ERR",
+    "color": "red"
+  },
+  "info": {
+    "prefix": "INFO",
+    "color": "reset"
+  },
+  "log": {
+    "prefix": "LOG",
+    "color": "reset"
+  },
+  "warn": {
+    "prefix": "WARN",
+    "color": "yellow"
+  }
+}

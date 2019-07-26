@@ -1,20 +1,9 @@
+const path = require('path');
 const expect = require('chai').expect;
 const sinon = require('sinon');
 const log = require('./');
-
-const logLevels = [
-  'info',
-  'log',
-  'warn',
-  'error'
-];
-
-const prefixes = {
-  log: 'LOG',
-  info: 'INFO',
-  warn: 'WARN',
-  error: 'ERR'
-};
+const logLevelInfo = require('./support/loglevels');
+const logLevels = Object.keys(logLevelInfo);
 
 describe('log', () => {
   let regex;
@@ -36,7 +25,7 @@ describe('log', () => {
     describe(`${logLevel}()`, () => {
       beforeEach(() => {
         consoleSpy = sinon.spy(console, logLevel);
-        regex = new RegExp(`^\\d{4}-\\d{2}-\\d{2} \\d{1,2}:\\d{2}:\\d{2} ${prefixes[logLevel]}`);
+        regex = new RegExp(`\\d{4}-\\d{2}-\\d{2} \\d{1,2}:\\d{2}:\\d{2} ${logLevelInfo[logLevel].prefix}`);
       });
 
       afterEach(() => {
@@ -57,7 +46,7 @@ describe('log', () => {
         });
 
         it('appends the string to the line', () => {
-          expect(consoleSpy.firstCall.args[0]).to.match(/.*test$/);
+          expect(consoleSpy.firstCall.args[0]).to.match(/.*test/);
         });
       });
 
@@ -66,7 +55,7 @@ describe('log', () => {
           log[logLevel](new Error('test'));
         });
 
-        it(`logs to the console.${logLevel} two times`, () => {
+        it(`logs to the console.${logLevel} three times`, () => {
           expect(consoleSpy.calledTwice).to.be.true;
         });
 
@@ -75,7 +64,7 @@ describe('log', () => {
         });
 
         it('appends the error message to the first line', () => {
-          expect(consoleSpy.firstCall.args[0]).to.match(/.*test$/);
+          expect(consoleSpy.firstCall.args[0]).to.match(/.*test/);
         });
       });
 
@@ -93,9 +82,30 @@ describe('log', () => {
         });
 
         it('appends a delimiter as last line', () => {
-          expect(consoleSpy.lastCall.args[0]).to.match(/^-+$/);
+          expect(consoleSpy.lastCall.args[0]).to.match(/-+/);
         });
       });
+    });
+  });
+
+  describe('debug', () => {
+    let nodeEnv;
+    beforeEach(() => {
+      nodeEnv = process.env.NODE_ENV;
+      delete require.cache[path.resolve('./index.js')];
+      process.env.NODE_ENV = 'production';
+      const prodLog = require('./');
+      consoleSpy = sinon.spy(console, 'debug');
+      prodLog.debug('test');
+    });
+
+    afterEach(() => {
+      console.debug.restore();
+      process.env.NODE_ENV = nodeEnv;
+    });
+
+    it('does not log', () => {
+      expect(consoleSpy.callCount).to.equal(0);
     });
   });
 });
