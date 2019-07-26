@@ -1,3 +1,6 @@
+## 1.1.1
+* Update readme.
+
 ## 1.1.0
 * [#6: Add debug log level.](https://github.com/haensl/log/issues/6)
 * Add colored output.

@@ -18,15 +18,17 @@ Via yarn
 
 ## Usage
 
-Log exposes four functions:
+Log exposes five functions:
 
-`info(...args)`
+`debug(...args)` _green output. does not log if_ `NODE_ENV` _is set to production._
 
-`log(...args)`
+`info(...args)` _default terminal color output._
 
-`warn(...args)`
+`log(...args)` _default terminal color output._
 
-`error(...args)`
+`warn(...args)` _yellow output._
+
+`error(...args)` _red output._
 
 Each of them maps to the respective `console` function.
 The first line of each log is prefixed with timestamp and log level.
