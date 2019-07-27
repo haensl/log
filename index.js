@@ -19,7 +19,7 @@ const log = ({ fn, prefix, color }, ...data) => {
     logFn(colored(msg.stack));
   } else if (typeof msg === 'object') {
     logFn(colored(`${timestamp()} ${prefix}`));
-    logFn(colored(msg));
+    logFn(colored(JSON.stringify(msg, null, 2)));
   } else {
     logFn(colored(`${timestamp()} ${prefix} ${msg}`));
   }

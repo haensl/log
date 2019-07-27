@@ -1,3 +1,6 @@
+## 1.1.2
+* Fix a bug that caused object to not be printed correctly.
+
 ## 1.1.1
 * Update readme.
 
