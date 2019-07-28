@@ -29,7 +29,17 @@ describe('log', () => {
       });
 
       afterEach(() => {
-        console[logLevel].restore();
+        console[logLevel].restore(); // eslint-disable-line no-console
+      });
+
+      describe('passing no parameter', () => {
+        beforeEach(() => {
+          log[logLevel]();
+        });
+
+        it(`does not log to console.${logLevel}`, () => {
+          expect(consoleSpy.called).to.be.false;
+        });
       });
 
       describe('passing a string as first parameter', () => {
@@ -56,7 +66,7 @@ describe('log', () => {
         });
 
         it(`logs to the console.${logLevel} three times`, () => {
-          expect(consoleSpy.calledTwice).to.be.true;
+          expect(consoleSpy.calledThrice).to.be.true;
         });
 
         it('prepends the first line with timestamp and log level', () => {
@@ -73,8 +83,8 @@ describe('log', () => {
           log[logLevel]({ a: 1 }, 15, new Error('foo'));
         });
 
-        it(`logs to the console.${logLevel} once for each paramter plus preamble and delimiter times`, () => {
-          expect(consoleSpy.callCount).to.equal(5);
+        it(`logs to the console.${logLevel} once for each paramter plus one Error preamble, general preamble and delimiter times`, () => {
+          expect(consoleSpy.callCount).to.equal(6);
         });
 
         it('prepends the first line with timestamp and log level', () => {
@@ -100,7 +110,7 @@ describe('log', () => {
     });
 
     afterEach(() => {
-      console.debug.restore();
+      console.debug.restore(); // eslint-disable-line no-console
       process.env.NODE_ENV = nodeEnv;
     });
 
