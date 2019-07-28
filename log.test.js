@@ -32,6 +32,16 @@ describe('log', () => {
         console[logLevel].restore(); // eslint-disable-line no-console
       });
 
+      describe('passing no parameter', () => {
+        beforeEach(() => {
+          log[logLevel]();
+        });
+
+        it(`does not log to console.${logLevel}`, () => {
+          expect(consoleSpy.called).to.be.false;
+        });
+      });
+
       describe('passing a string as first parameter', () => {
         beforeEach(() => {
           log[logLevel]('test');
