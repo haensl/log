@@ -1,3 +1,7 @@
+## 1.2.0
+* [#9: JSON stringify data objects.](https://github.com/haensl/log/issues/9)
+* [#8: Use @haensl/eslint-config.](https://github.com/haensl/log/issues/8)
+
 ## 1.1.2
 * Fix a bug that caused object to not be printed correctly.
 

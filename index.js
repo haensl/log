@@ -11,26 +11,22 @@ const timestamp = () => {
 };
 
 const log = ({ fn, prefix, color }, ...data) => {
-  const msg = data[0];
   const colored = chalk[color];
-  const logFn = console[fn];
-  if (msg instanceof Error) {
-    logFn(colored(`${timestamp()} ${prefix} ${msg.message}`));
-    logFn(colored(msg.stack));
-  } else if (typeof msg === 'object') {
-    logFn(colored(`${timestamp()} ${prefix}`));
-    logFn(colored(JSON.stringify(msg, null, 2)));
-  } else {
-    logFn(colored(`${timestamp()} ${prefix} ${msg}`));
-  }
-
-  if (data.length > 1) {
-    for (let i = 1; i < data.length; i++) {
-      logFn(colored(data[i]));
+  const logFn = console[fn]; // eslint-disable-line no-console
+  for (let msg, i = 0; i < data.length; i++) {
+    msg = data[i];
+    if (msg instanceof Error) {
+      logFn(colored(`${timestamp()} ${prefix} ${msg.message}`));
+      logFn(colored(msg.stack));
+    } else if (typeof msg === 'object') {
+      logFn(colored(`${timestamp()} ${prefix}`));
+      logFn(colored(JSON.stringify(msg, null, 2)));
+    } else {
+      logFn(colored(`${timestamp()} ${prefix} ${msg}`));
     }
   }
 
-  if ((data.length && !msg) || data.length > 1) {
+  if (typeof data[0] === 'object' || data.length > 1) {
     logFn(colored('--------------------------------'));
   }
 };
@@ -39,9 +35,13 @@ module.exports = Object.keys(logLevels)
   .reduce((m, logLevel) => {
     if (logLevel === 'debug'
       && process.env.NODE_ENV === 'production') {
-      m[logLevel] = () => {};
+      m[logLevel] = () => {}; // eslint-disable-line no-empty-function
     } else {
-      m[logLevel] = log.bind(null, { fn: logLevel, prefix: logLevels[logLevel].prefix, color: logLevels[logLevel].color });
+      m[logLevel] = log.bind(null, {
+        fn: logLevel,
+        prefix: logLevels[logLevel].prefix,
+        color: logLevels[logLevel].color
+      });
     }
 
     return m;
