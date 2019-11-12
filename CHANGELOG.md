@@ -1,3 +1,6 @@
+## 1.2.1
+* [#12: Update dependencies.](https://github.com/haensl/log/issues/12)
+
 ## 1.2.0
 * [#9: JSON stringify data objects.](https://github.com/haensl/log/issues/9)
 * [#8: Use @haensl/eslint-config.](https://github.com/haensl/log/issues/8)
