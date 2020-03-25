@@ -1,3 +1,6 @@
+## 1.2.2
+* [#14: Update dependencies.](https://github.com/haensl/log/issues/14)
+
 ## 1.2.1
 * [#12: Update dependencies.](https://github.com/haensl/log/issues/12)
 
