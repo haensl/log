@@ -10,7 +10,7 @@ const timestamp = () => {
   return `${now.getFullYear()}-${zeroPad(now.getMonth() + 1)}-${zeroPad(now.getDate())} ${now.getHours()}:${zeroPad(now.getMinutes())}:${zeroPad(now.getSeconds())}`;
 };
 
-const log = ({ fn, prefix, color }, ...data) => {
+const logFn = ({ fn, prefix, color }, ...data) => {
   const colored = chalk[color];
   const logFn = console[fn]; // eslint-disable-line no-console
   for (let msg, i = 0; i < data.length; i++) {
@@ -31,13 +31,13 @@ const log = ({ fn, prefix, color }, ...data) => {
   }
 };
 
-module.exports = Object.keys(logLevels)
+const log = Object.keys(logLevels)
   .reduce((m, logLevel) => {
     if (logLevel === 'debug'
       && process.env.NODE_ENV === 'production') {
       m[logLevel] = () => {}; // eslint-disable-line no-empty-function
     } else {
-      m[logLevel] = log.bind(null, {
+      m[logLevel] = logFn.bind(null, {
         fn: logLevel,
         prefix: logLevels[logLevel].prefix,
         color: logLevels[logLevel].color
@@ -46,3 +46,5 @@ module.exports = Object.keys(logLevels)
 
     return m;
   }, {});
+
+module.exports = log;

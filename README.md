@@ -2,7 +2,7 @@
 [![NPM](https://nodei.co/npm/@haensl%2Flog.png?downloads=true)](https://nodei.co/npm/@haensl%2Flog/)
 
 [![npm version](https://badge.fury.io/js/@haensl%2Flog.svg)](http://badge.fury.io/js/@haensl%2Flog)
-[![travis-ci build status](https://api.travis-ci.org/haensl/@haensl%2Flog.svg?branch=master)](https://travis-ci.org/haensl/@haensl%2Flog/branches)
+[![CircleCI](https://circleci.com/gh/haensl/log.svg?style=svg)](https://circleci.com/gh/haensl/log)
 
 Minimal Node.js log service.
 
@@ -17,6 +17,14 @@ Via yarn
 `yarn add @haensl/log`
 
 ## Usage
+
+```javascript
+const log = require('@haensl/log');
+
+log.debug('Some debug log message');
+```
+
+### API
 
 Log exposes five functions:
 
@@ -39,13 +47,17 @@ If more than one argument is passed, the block is delimited by dashes.
 ### Examples
 
 ```javascript
-console.info('test');
+const log = require('@haensl/log');
+
+log.info('test');
 
 // 2018-11-10 23:07:16 INFO test
 ```
 
 ```javascript
-console.error({ a: 1 }, 15, new Error('foo'));
+const log = require('@haensl/log');
+
+log.error({ a: 1 }, 15, new Error('foo'));
 
 // 2018-11-10 23:07:16 ERR
 // { a: 1 }
