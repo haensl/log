@@ -65,13 +65,7 @@ workflows:
     jobs:
       - lint
       - test
-      - bundle:
-          requires:
-            - lint
-            - test
-      - ensure-versioned-correctly:
-          requires:
-            - bundle
+      - ensure-versioned-correctly
       - publish:
           requires:
             - ensure-versioned-correctly
