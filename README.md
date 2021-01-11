@@ -1,4 +1,5 @@
-# log
+# @haensl/log
+
 [![NPM](https://nodei.co/npm/@haensl%2Flog.png?downloads=true)](https://nodei.co/npm/@haensl%2Flog/)
 
 [![npm version](https://badge.fury.io/js/@haensl%2Flog.svg)](http://badge.fury.io/js/@haensl%2Flog)
