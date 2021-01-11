@@ -142,8 +142,7 @@ jobs:
     working_directory: ~/log
     steps:
       - init
-      - attach_workspace:
-          at: ~/log
+      - prepare-repo
       - run:
           name: setup npm registry token
           command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
@@ -155,8 +154,8 @@ jobs:
     docker:
       - image: cibuilds/github
     steps:
-      - attach_workspace:
-          at: ~/log
+      - init
+      - prepare-repo
       - extract-changelog-version
       - run:
           name: publish github release
