@@ -154,7 +154,7 @@ jobs:
     docker:
       - image: cibuilds/github
     steps:
-      - init
+      - checkout
       - prepare-repo
       - extract-changelog-version
       - run:
