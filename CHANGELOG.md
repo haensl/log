@@ -1,3 +1,10 @@
+## 1.3.0
+* [#16: Migrate to CircleCI.](https://github.com/haensl/log/issues/16)
+* Move eslint configuration into `package.json`.
+* Update dependencies.
+* Create log service only once.
+* Remove pre-push git hook.
+
 ## 1.2.2
 * [#14: Update dependencies.](https://github.com/haensl/log/issues/14)
 

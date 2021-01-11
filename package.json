@@ -1,19 +1,31 @@
 {
   "name": "@haensl/log",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Minimal node.js log service.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint -c .eslintrc.json **/*.js",
-    "lint:junit": "eslint -c .eslintrc.json --format junit -o test-results/eslint/results.xml **/*.js",
+    "lint": "eslint **/*.js",
+    "lint:junit": "eslint --format junit -o test-results/eslint/results.xml **/*.js",
     "tdd": "mocha --watch --recursive '*.test.js'",
     "test": "mocha --recursive '*.test.js'",
     "test:junit": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/results.xml --recursive '*.test.js'"
   },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "jest": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 11
+    },
+    "extends": [
+      "@haensl"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm test",
-      "pre-push": "npm run lint && npm test"
+      "pre-commit": "npm run lint && npm test"
     }
   },
   "publishConfig": {
@@ -43,13 +55,13 @@
   "devDependencies": {
     "@haensl/eslint-config": "^1.3.0",
     "chai": "^4.2.0",
-    "eslint": "^6.8.0",
-    "husky": "^4.2.3",
-    "mocha": "^7.1.1",
-    "mocha-junit-reporter": "^1.23.3",
-    "sinon": "^9.0.1"
+    "eslint": "^7.17.0",
+    "husky": "^4.3.7",
+    "mocha": "^8.2.1",
+    "mocha-junit-reporter": "^2.0.0",
+    "sinon": "^9.2.3"
   },
   "dependencies": {
-    "chalk": "^3.0.0"
+    "chalk": "^4.1.0"
   }
 }
