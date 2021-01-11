@@ -1,5 +1,8 @@
+## 1.3.2
+* [#21: Fix Github release publishing.](https://github.com/haensl/log/issues/21)
+
 ## 1.3.1
-* Fix Github release publishing.
+* [#21: Fix Github release publishing.](https://github.com/haensl/log/issues/21)
 
 ## 1.3.0
 * [#16: Migrate to CircleCI.](https://github.com/haensl/log/issues/16)
