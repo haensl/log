@@ -1,3 +1,6 @@
+## 1.3.1
+* Fix Github release publishing.
+
 ## 1.3.0
 * [#16: Migrate to CircleCI.](https://github.com/haensl/log/issues/16)
 * Move eslint configuration into `package.json`.
