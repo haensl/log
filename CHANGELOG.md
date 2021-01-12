@@ -1,3 +1,6 @@
+## 1.3.4
+* [#21: Fix Github release publishing.](https://github.com/haensl/log/issues/21)
+
 ## 1.3.3
 * [#21: Fix Github release publishing.](https://github.com/haensl/log/issues/21)
 
