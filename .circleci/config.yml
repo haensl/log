@@ -66,9 +66,11 @@ workflows:
       - lint
       - test
       - ensure-versioned-correctly
+      - bundle
       - publish:
           requires:
             - ensure-versioned-correctly
+            - bundle
           filters:
             branches:
               only: master
@@ -136,6 +138,21 @@ jobs:
             }
             VERSION_CHECK
 
+  bundle:
+    docker:
+      - image: circleci/node:lts
+    working_directory: ~/log
+    steps:
+      - init
+      - checkout
+      - run:
+          name: bundle
+          command: npm pack
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - haensl-log-*.tgz
+
   publish:
     docker:
       - image: circleci/node:lts
@@ -157,11 +174,12 @@ jobs:
     steps:
       - checkout
       - extract-changelog-version
+      - attach_workspace:
+          at: ~/log
       - run:
           name: publish github release
           working_directory: ~/log
           command: |
-            npm pack
             CHANGES=$(awk "/## ${VERSION}/,/^$/" CHANGELOG.md)
             echo "Publishing release v${VERSION} to Github.\nChanges:"
             echo $CHANGES
