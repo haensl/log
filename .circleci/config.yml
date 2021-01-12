@@ -155,7 +155,6 @@ jobs:
       - image: cibuilds/github
     steps:
       - checkout
-      - prepare-repo
       - extract-changelog-version
       - run:
           name: publish github release
