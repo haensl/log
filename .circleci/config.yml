@@ -153,6 +153,7 @@ jobs:
   publish-github-release:
     docker:
       - image: cibuilds/github
+    working_directory: ~/log
     steps:
       - checkout
       - extract-changelog-version
