@@ -171,11 +171,11 @@ jobs:
     docker:
       - image: cibuilds/github
     working_directory: ~/log
-    attach_workspace:
-      at: ~/log
     steps:
       - checkout
       - extract-changelog-version
+      - attach_workspace:
+          at: ~/log
       - run:
           name: publish github release
           working_directory: ~/log
