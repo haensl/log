@@ -1,8 +1,9 @@
 const path = require('path');
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const sinon = require('sinon');
 const log = require('./');
 const logLevelInfo = require('./support/loglevels');
+
 const logLevels = Object.keys(logLevelInfo);
 
 describe('log', () => {
