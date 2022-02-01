@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint **/*.js",
     "lint:junit": "eslint --format junit -o test-results/eslint/results.xml **/*.js",
+    "prepare": "if [ ${NODE_ENV} != 'production' ]; then husky install; fi",
     "tdd": "mocha --watch --recursive '*.test.js'",
     "test": "mocha --recursive '*.test.js'",
     "test:junit": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/results.xml --recursive '*.test.js'"
