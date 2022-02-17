@@ -1,3 +1,7 @@
+## 1.3.8
+* [#32: Add funding information.](https://github.com/haensl/log/issues/32)
+* Update dependencies.
+
 ## 1.3.7
 * [#30: Update dependencies.](https://github.com/haensl/log/issues/30)
 
