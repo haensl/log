@@ -1,3 +1,6 @@
+## 1.3.12
+* [#41: Update dependencies.](https://github.com/haensl/log/issues/41)
+
 ## 1.3.11
 * [#38: Update dependencies.](https://github.com/haensl/log/issues/38)
 

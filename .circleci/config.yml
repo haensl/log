@@ -49,7 +49,8 @@ commands:
     steps:
       - checkout
       - restore_cache:
-          keys: log-dependencies-{{ checksum "package-lock.json" }}
+          keys:
+            - log-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: install dependencies
           command: npm i
@@ -81,7 +82,7 @@ workflows:
 jobs:
   lint:
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:lts
     working_directory: ~/log
     steps:
       - init
@@ -97,7 +98,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:lts
     working_directory: ~/log
     steps:
       - init
@@ -110,7 +111,7 @@ jobs:
 
   ensure-versioned-correctly:
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:lts
     working_directory: ~/log
     steps:
       - init
@@ -140,7 +141,7 @@ jobs:
 
   bundle:
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:lts
     working_directory: ~/log
     steps:
       - init
@@ -155,7 +156,7 @@ jobs:
 
   publish:
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:lts
     working_directory: ~/log
     steps:
       - init
