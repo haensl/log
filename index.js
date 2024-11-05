@@ -1,5 +1,4 @@
 const chalk = require('chalk');
-require('./services/redirect');
 const logLevels = require('./support/loglevels');
 
 const zeroPad = (d) => parseFloat(d) < 10
