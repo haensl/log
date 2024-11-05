@@ -1,12 +1,12 @@
 {
   "name": "@haensl/log",
-  "version": "1.3.13",
+  "version": "1.3.14",
   "description": "Minimal node.js log service.",
   "main": "index.js",
   "scripts": {
     "lint": "eslint **/*.js",
     "lint:junit": "eslint --format junit -o test-results/eslint/results.xml **/*.js",
-    "prepare": "if [ ${NODE_ENV} != 'production' ]; then husky install; fi",
+    "prepare": "if [ ${NODE_ENV} != 'production' ]; then husky; fi",
     "tdd": "mocha --watch --recursive '*.test.js'",
     "test": "mocha --recursive '*.test.js'",
     "test:junit": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/mocha/results.xml --recursive '*.test.js'"
